@@ -25,22 +25,22 @@ export default class Form extends React.Component {
 
     }
 
-    postProduct = () => {
-        const newProduct = {
-            name: this.state.productNameInput, 
-            price: this.state.priceInput, 
-            img: this.state.imageUrlInput
-        }
+    // postProduct = () => {
+    //     const newProduct = {
+    //         name: this.state.productNameInput, 
+    //         price: this.state.priceInput, 
+    //         img: this.state.imageUrlInput
+    //     }
         
-        if (this.state.priceInput === +this.state.priceInput) {
-            axios.post('/api/product', newProduct)
-                .then(dbResponse => {
-                    this.props.
-                })
-        } else {
-            alert("Invalid entry: the Price entered must be a whole number.")
-        }
-    }
+    //     if (this.state.priceInput === +this.state.priceInput) {
+    //         axios.post('/api/product', newProduct)
+    //             .then(dbResponse => {
+    //                 this.props.
+    //             })
+    //     } else {
+    //         alert("Invalid entry: the Price entered must be a whole number.")
+    //     }
+    // }
 
 
 
@@ -77,7 +77,7 @@ export default class Form extends React.Component {
     }
 
     render() {
-        console.log(`this is state: ${this.state.imageUrlInput}`)
+        // console.log(`this is state: ${this.state.imageUrlInput}`)
         return (
             <div>
                 <div>Form</div>

@@ -26,7 +26,20 @@ export default class Form extends React.Component {
     }
 
     postProduct = () => {
-        axios.post('/api/product')
+        const newProduct = {
+            name: this.state.productNameInput, 
+            price: this.state.priceInput, 
+            img: this.state.imageUrlInput
+        }
+        
+        if (this.state.priceInput === +this.state.priceInput) {
+            axios.post('/api/product', newProduct)
+                .then(dbResponse => {
+                    this.props.
+                })
+        } else {
+            alert("Invalid entry: the Price entered must be a whole number.")
+        }
     }
 
 

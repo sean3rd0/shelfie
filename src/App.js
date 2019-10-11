@@ -10,7 +10,23 @@ export default class App extends React.Component {
     super() 
 
     this.state = {
-        somethingGoesHereButIDontKnowWhat: {}
+      inventoryList: [
+        {
+          name: "yellow", 
+          price: 5, 
+          img: "yahoo!"
+        }, 
+        {
+          name: "red", 
+          price: 3, 
+          img: "yah!"
+        }, 
+        {
+          name: "blue", 
+          price: 7, 
+          img: "yahoooo!"
+        }
+      ]
     }
   }
 
@@ -22,7 +38,7 @@ export default class App extends React.Component {
       axios.get('/api/inventory')
           .then(response => {
               this.setState({
-                  somethingGoesHereButIDontKnowWhat: response
+                  inventoryList: response
               })
           })
           .catch(err => {
@@ -32,7 +48,9 @@ export default class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Dashboard />
+        <Dashboard 
+          inventoryList = {this.state.inventoryList}
+        />
         <Form />
         <Header />
       </div>

@@ -24,21 +24,24 @@ export default class App extends React.Component {
         {
           name: "blue", 
           price: 7, 
-          img: "yahoooo!"
+          img: "https://cdn.pixabay.com/photo/2016/12/13/05/15/puppy-1903313__340.jpg"
         }
       ]
     }
+
+    this.getInventory = this.getInventory.bind(this)
+
   }
 
   componentDidMount () {
-
+    this.getInventory()
   }
 
   getInventory = () => {
       axios.get('/api/inventory')
           .then(response => {
               this.setState({
-                  inventoryList: response
+                  inventoryList: response.data
               })
           })
           .catch(err => {
@@ -49,9 +52,12 @@ export default class App extends React.Component {
     return (
       <div className="App">
         <Dashboard 
-          inventoryList = {this.state.inventoryList}
+          inventoryList = {this.state.inventoryList} 
+          getInventory = {this.getInventory}
         />
-        <Form />
+        <Form 
+          getInventory = {this.getInventory}
+        />
         <Header />
       </div>
     );

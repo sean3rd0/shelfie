@@ -8,4 +8,4 @@ INSERT INTO products (
     $3
 );
 
-SELECT * FROM products;
+-- SELECT * FROM products;

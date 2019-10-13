@@ -19,28 +19,31 @@ export default class Form extends React.Component {
         
         this.handlePriceInputValueChange = this.handlePriceInputValueChange.bind(this)
         
+        this.handleInputClear = this.handleInputClear.bind(this)
+
         this.handleCancelButtonClick = this.handleCancelButtonClick.bind(this)
         
         this.handleAddToInventoryButtonClick = this.handleAddToInventoryButtonClick.bind(this)
 
     }
 
-    // postProduct = () => {
-    //     const newProduct = {
-    //         name: this.state.productNameInput, 
-    //         price: this.state.priceInput, 
-    //         img: this.state.imageUrlInput
-    //     }
-        
-    //     if (this.state.priceInput === +this.state.priceInput) {
-    //         axios.post('/api/product', newProduct)
-    //             .then(dbResponse => {
-    //                 this.props.
-    //             })
-    //     } else {
-    //         alert("Invalid entry: the Price entered must be a whole number.")
-    //     }
-    // }
+    createProduct = () => {
+        const newProduct = {
+            name: this.state.productNameInput, 
+            price: this.state.priceInput, 
+            img: this.state.imageUrlInput
+        }
+        console.log(this.state.priceInput)
+        if (this.state.priceInput == +this.state.priceInput) {
+            axios.post('/api/product', newProduct)
+                .then(() => {
+                    this.props.getInventory()
+                    this.handleInputClear()
+                })
+        } else {
+            alert("Invalid entry: the Price entered must be a whole number.")
+        }
+    }
 
 
 
@@ -64,7 +67,7 @@ export default class Form extends React.Component {
 
 
 
-    handleCancelButtonClick () {
+    handleInputClear () {
         this.setState({
             imageUrlInput: "", 
             productNameInput: "", 
@@ -72,8 +75,12 @@ export default class Form extends React.Component {
         })
     }
 
+    handleCancelButtonClick () {
+        this.handleInputClear()
+    }
+
     handleAddToInventoryButtonClick () {
-        
+        this.createProduct()
     }
 
     render() {
@@ -81,7 +88,7 @@ export default class Form extends React.Component {
         return (
             <div>
                 <div>Form</div>
-                <image className="form-image-display"></image>
+                <img className="form-image-display"></img>
                 <div>Image URL:</div>
                 <input 
                     id="image-url-input"

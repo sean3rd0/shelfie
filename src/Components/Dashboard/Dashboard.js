@@ -8,7 +8,7 @@ export default class Dashboard extends React.Component {
     deleteProduct = (id) => {
         axios.delete(`/api/product/${id}`)
             .then(() => {
-                this.props.getInventory
+                this.props.getInventory()
             })
             .catch(err => {
                 console.log(err)

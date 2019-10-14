@@ -11,7 +11,7 @@ massive(CONNECTION_STRING)
     .then(db => {
         app.set('db', db)
         app.listen(SERVER_PORT, console.log(`Server listening on port ${SERVER_PORT}.`))
-        console.log(`db connected.`)
+        console.log(`... I'm in`)
     })
     .catch(err => {
         console.log(err)
